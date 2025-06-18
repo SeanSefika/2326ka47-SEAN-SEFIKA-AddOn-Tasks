@@ -1,4 +1,4 @@
-package task5;
+package postassessment;
 import java.util.Scanner;
 
 public class MiniAddressBook
