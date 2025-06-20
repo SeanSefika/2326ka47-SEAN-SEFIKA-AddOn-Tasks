@@ -1,0 +1,332 @@
+**********TASK 1**********
+
+mysql> CREATE DATABASE FSD_tasks;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> USE FSD_tasks;
+Database changed
+
+mysql> CREATE TABLE STUDENT(ROLLNO INT, NAME CHAR(20), AGE INT CHECK(AGE>=17), COURSE_FEE INT);
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> INSERT INTO STUDENT VALUES(1,"SEFI",20,5000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO STUDENT VALUES(2,"STEVE",24,6000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO STUDENT VALUES(3,"FENICUS",27,7000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO STUDENT VALUES(4,"PRAISELIN",27,8000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> ALTER TABLE STUDENT ADD COLUMN MARKS INT;
+Query OK, 0 rows affected (0.31 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> UPDATE STUDENT SET MARKS = 100 WHERE ROLLNO = 1;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE STUDENT SET MARKS = 99 WHERE ROLLNO = 2;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE STUDENT SET MARKS = 98 WHERE ROLLNO = 3;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE STUDENT SET MARKS = 97 WHERE ROLLNO = 4;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM STUDENT;
++--------+-----------+------+------------+-------+
+| ROLLNO | NAME      | AGE  | COURSE_FEE | MARKS |
++--------+-----------+------+------------+-------+
+|      1 | SEFI      |   20 |       5000 |   100 |
+|      2 | STEVE     |   24 |       6000 |    99 |
+|      3 | FENICUS   |   27 |       7000 |    98 |
+|      4 | PRAISELIN |   27 |       8000 |    97 |
++--------+-----------+------+------------+-------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT NAME,COURSE_FEE, COURSE_FEE+(COURSE_FEE*0.12) FROM STUDENT;
++-----------+------------+------------------------------+
+| NAME      | COURSE_FEE | COURSE_FEE+(COURSE_FEE*0.12) |
++-----------+------------+------------------------------+
+| SEFI      |       5000 |                      5600.00 |
+| STEVE     |       6000 |                      6720.00 |
+| FENICUS   |       7000 |                      7840.00 |
+| PRAISELIN |       8000 |                      8960.00 |
++-----------+------------+------------------------------+
+4 rows in set (0.00 sec)
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+mysql> CREATE TABLE COURSE(SNO INT, STUDENT_NAME CHAR(20), COURSE_NAME CHAR(30), COURSE_FEES INT);
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> INSERT INTO COURSE VALUES(1,"SEFI","COMPUTER TECHNOLOGY",50000)
+    -> ;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO COURSE VALUES(2,"STEVE","MUSIC",20000)
+    -> ;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO COURSE VALUES(3,"PRAISELIN","VISCOM",10000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT * FROM COURSE;
++------+--------------+---------------------+-------------+
+| SNO  | STUDENT_NAME | COURSE_NAME         | COURSE_FEES |
++------+--------------+---------------------+-------------+
+|    1 | SEFI         | COMPUTER TECHNOLOGY |       50000 |
+|    2 | STEVE        | MUSIC               |       20000 |
+|    3 | PRAISELIN    | VISCOM              |       10000 |
++------+--------------+---------------------+-------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT STUDENT_NAME,COURSE_FEES, COURSE_FEES+(COURSE_FEES*0.12) FROM COURSE;
++--------------+-------------+--------------------------------+
+| STUDENT_NAME | COURSE_FEES | COURSE_FEES+(COURSE_FEES*0.12) |
++--------------+-------------+--------------------------------+
+| SEFI         |       50000 |                       56000.00 |
+| STEVE        |       20000 |                       22400.00 |
+| PRAISELIN    |       10000 |                       11200.00 |
++--------------+-------------+--------------------------------+
+3 rows in set (0.00 sec)
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+mysql> CREATE DATABASE LIBRARY;
+Query OK, 1 row affected (0.06 sec)
+
+mysql> CREATE TABLE BOOKS(S_NO INT, STUDENT_NAME CHAR(20), BOOK_NAME CHAR(20), ISSUE_DATE DATE, RETURN_DATE DATE);
+Query OK, 0 rows affected (0.23 sec)
+
+mysql> CREATE TABLE LIBRARY_ACCESS(S_NO INT, STUDENT_NAME CHAR(20), GENDER CHAR(1), AGE INT CHECK(AGE>=17), DEPT CHAR(10));
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> CREATE TABLE LIBRARY_PUNCH(S_NO INT, AGE INT CHECK(AGE>=17), DEPT CHAR(10));
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> INSERT INTO BOOKS VALUES(1,"SEFI","THE JUNGLE BOOK","2025-06-19","2025-06-29");
+Query OK, 1 row affected (0.03 sec)
+
+mysql> INSERT INTO BOOKS VALUES(2,"STEVE","THE LION KING","2025-05-01","2025-05-30");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO LIBRARY_ACCESS VALUES(1,"SEFI","F",20,"CT");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO LIBRARY_ACCESS VALUES(2,"STEVE","M",24,"MUSIC");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO LIBRARY_PUNCH VALUES(1,20,"CT");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO LIBRARY_PUNCH VALUES(2,24,"MUSIC");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT * FROM BOOKS;
++------+--------------+-----------------+------------+-------------+
+| S_NO | STUDENT_NAME | BOOK_NAME       | ISSUE_DATE | RETURN_DATE |
++------+--------------+-----------------+------------+-------------+
+|    1 | SEFI         | THE JUNGLE BOOK | 2025-06-19 | 2025-06-29  |
+|    2 | STEVE        | THE LION KING   | 2025-05-01 | 2025-05-30  |
++------+--------------+-----------------+------------+-------------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT * FROM LIBRARY_ACCESS;
++------+--------------+--------+------+-------+
+| S_NO | STUDENT_NAME | GENDER | AGE  | DEPT  |
++------+--------------+--------+------+-------+
+|    1 | SEFI         | F      |   20 | CT    |
+|    2 | STEVE        | M      |   24 | MUSIC |
++------+--------------+--------+------+-------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT * FROM LIBRARY_PUNCH;
++------+------+-------+
+| S_NO | AGE  | DEPT  |
++------+------+-------+
+|    1 |   20 | CT    |
+|    2 |   24 | MUSIC |
++------+------+-------+
+2 rows in set (0.00 sec)
+
+------------------------------------------------------------------------------------------------------
+
+mysql> CREATE TABLE EMPLOYEE(EMPNO INT, EMPNAME CHAR(20), EMPJOB CHAR(20), EMPSALARY INT, EMP_HIREDATE DATE);
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> CREATE TABLE DEPARTMENT(DEPTNO INT, DEPTNAME CHAR(20), SALARY DECIMAL(10, 2), DEPTLOC CHAR(20));
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> INSERT INTO EMPLOYEE VALUES(1, "A","CLERK",20000,"2020-12-01");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO EMPLOYEE VALUES(2, "B","SALESMAN",10000,"2020-11-20");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO EMPLOYEE VALUES(3, "C","MANAGER",50000,"2005-01-01");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO EMPLOYEE VALUES(4, "D","SECRETARY",60000,"2010-03-06");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO EMPLOYEE VALUES(5, "E","CEO",100000,"2010-03-06");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO DEPARTMENT VALUES(1, "HR",100000,"GROUND FLOOR");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO DEPARTMENT VALUES(2, "ACCOUNTING",20000,"FIRST FLOOR");
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO DEPARTMENT VALUES(3, "SALES",10000,"SECOND FLOOR");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO DEPARTMENT VALUES(4, "MARKETING",20000,"THIRD FLOOR");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO DEPARTMENT VALUES(4, "SERVICE",20000,"FOURTH FLOOR");
+Query OK, 1 row affected (0.01 sec)
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+**********TASK 2**********
+
+mysql> SELECT NAME FROM STUDENT WHERE MARKS>98;
++-------+
+| NAME  |
++-------+
+| SEFI  |
+| STEVE |
++-------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT COURSE_NAME,COURSE_FEES FROM COURSE ORDER BY COURSE_FEES;
++---------------------+-------------+
+| COURSE_NAME         | COURSE_FEES |
++---------------------+-------------+
+| VISCOM              |       10000 |
+| MUSIC               |       20000 |
+| COMPUTER TECHNOLOGY |       50000 |
++---------------------+-------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT COURSE_NAME FROM COURSE WHERE COURSE_NAME LIKE "J%";
+Empty set (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEE WHERE EMPJOB="SALESMAN" AND EMPSALARY>2000;
++-------+---------+----------+-----------+--------------+
+| EMPNO | EMPNAME | EMPJOB   | EMPSALARY | EMP_HIREDATE |
++-------+---------+----------+-----------+--------------+
+|     2 | B       | SALESMAN |     10000 | 2020-11-20   |
++-------+---------+----------+-----------+--------------+
+1 row in set (0.00 sec)
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+**********TASK 3**********
+
+mysql> SELECT COUNT(DISTINCT COURSE_NAME) FROM COURSE;
++-----------------------------+
+| COUNT(DISTINCT COURSE_NAME) |
++-----------------------------+
+|                           3 |
++-----------------------------+
+1 row in set (0.09 sec)
+
+mysql> SELECT EMPJOB,AVG(EMPSALARY) FROM EMPLOYEE GROUP BY EMPJOB;
++-----------+----------------+
+| EMPJOB    | AVG(EMPSALARY) |
++-----------+----------------+
+| CLERK     |     20000.0000 |
+| SALESMAN  |     10000.0000 |
+| MANAGER   |     50000.0000 |
+| SECRETARY |     60000.0000 |
+| CEO       |    100000.0000 |
++-----------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT MAX(EMPSALARY), MIN(EMPSALARY) FROM EMPLOYEE GROUP BY EMPJOB;
++----------------+----------------+
+| MAX(EMPSALARY) | MIN(EMPSALARY) |
++----------------+----------------+
+|          20000 |          20000 |
+|          10000 |          10000 |
+|          50000 |          50000 |
+|          60000 |          60000 |
+|         100000 |         100000 |
++----------------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT CONCAT(EMPNAME," ","EARNS"," ",EMPSALARY," ","MONTHLY, BUT WANTS 3 TIMES OF SALARY"," ","->",EMPSALARY+(EMPSALARY*3)) AS "DREAM SALARIES" FROM EMPLOYEE;
++--------------------------------------------------------------+
+| DREAM SALARIES                                               |
++--------------------------------------------------------------+
+| A EARNS 20000 MONTHLY, BUT WANTS 3 TIMES OF SALARY ->80000   |
+| B EARNS 10000 MONTHLY, BUT WANTS 3 TIMES OF SALARY ->40000   |
+| C EARNS 50000 MONTHLY, BUT WANTS 3 TIMES OF SALARY ->200000  |
+| D EARNS 60000 MONTHLY, BUT WANTS 3 TIMES OF SALARY ->240000  |
+| E EARNS 100000 MONTHLY, BUT WANTS 3 TIMES OF SALARY ->400000 |
++--------------------------------------------------------------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT EMPJOB,EMPSALARY FROM EMPLOYEE WHERE EMPSALARY>5000;
++-----------+-----------+
+| EMPJOB    | EMPSALARY |
++-----------+-----------+
+| CLERK     |     20000 |
+| SALESMAN  |     10000 |
+| MANAGER   |     50000 |
+| SECRETARY |     60000 |
+| CEO       |    100000 |
++-----------+-----------+
+5 rows in set (0.00 sec)
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+**********TASK 4**********
+
+mysql> SELECT EMPNAME,EMP_HIREDATE,EMPJOB FROM EMPLOYEE WHERE EMP_HIREDATE BETWEEN "1981-01-01" AND "2005-06-30";
++---------+--------------+---------+
+| EMPNAME | EMP_HIREDATE | EMPJOB  |
++---------+--------------+---------+
+| C       | 2005-01-01   | MANAGER |
++---------+--------------+---------+
+1 row in set (0.00 sec)
+
+mysql> SELECT COURSE_NAME,STUDENT_NAME,COURSE_FEES FROM COURSE WHERE COURSE_FEES>1000;
++---------------------+--------------+-------------+
+| COURSE_NAME         | STUDENT_NAME | COURSE_FEES |
++---------------------+--------------+-------------+
+| COMPUTER TECHNOLOGY | SEFI         |       50000 |
+| MUSIC               | STEVE        |       20000 |
+| VISCOM              | PRAISELIN    |       10000 |
++---------------------+--------------+-------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT COUNT(DISTINCT DEPTNAME,DEPTLOC) FROM DEPARTMENT;
++----------------------------------+
+| COUNT(DISTINCT DEPTNAME,DEPTLOC) |
++----------------------------------+
+|                                5 |
++----------------------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT *
+    -> FROM EMPLOYEE
+    -> ORDER BY EMPSALARY DESC
+    -> LIMIT 1 OFFSET 2;
++-------+---------+---------+-----------+--------------+
+| EMPNO | EMPNAME | EMPJOB  | EMPSALARY | EMP_HIREDATE |
++-------+---------+---------+-----------+--------------+
+|     3 | C       | MANAGER |     50000 | 2005-01-01   |
++-------+---------+---------+-----------+--------------+
+1 row in set (0.00 sec)
