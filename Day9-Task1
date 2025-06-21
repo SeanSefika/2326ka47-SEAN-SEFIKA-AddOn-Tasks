@@ -1,0 +1,26 @@
++----------------+     +-------------------+     +-------------------+
+|     Author     |     |     BookAuthor    |     |      Book         |
+|----------------|     |-------------------|     |-------------------|
+| AuthorID (PK)  |<--->| BookID (FK)       |<--->| BookID (PK)       |
+| Name           |     | AuthorID (FK)     |     | Title             |
+| Bio            |     | Role              |     | ISBN              |
+| Email          |     +-------------------+     | Price             |
++----------------+                             | PublicationYear   |
+                                               | Genre             |
+                                               | StockQuantity     |
+                                               | PublisherID (FK)  |
+                                               +-------------------+
+                                                      |
+                                                      |
+                                                Published_By
+                                                      |
+                                                      v
+                                          +------------------------+
+                                          |       Publisher        |
+                                          |------------------------|
+                                          | PublisherID (PK)       |
+                                          | Name                   |
+                                          | Address                |
+                                          | ContactEmail           |
+                                          | Website                |
+                                          +------------------------+
