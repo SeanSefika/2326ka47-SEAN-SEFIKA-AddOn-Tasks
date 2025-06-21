@@ -1,0 +1,27 @@
+1. Filter by Job Title
+
+SELECT * FROM EMPLOYEE WHERE EMPJOB = 'MANAGER';
+
+2. Filter by Salary Range
+
+SELECT * FROM EMPLOYEE WHERE EMPSALARY BETWEEN 20000 AND 60000;
+
+3. Filter by Hire Date (Before a Certain Date)
+
+SELECT * FROM EMPLOYEE WHERE EMP_HIREDATE < '2015-01-01';
+
+4. Filter by Multiple Conditions (e.g., Job + Salary)
+
+SELECT * FROM EMPLOYEE WHERE EMPJOB = 'CLERK' AND EMPSALARY > 15000;
+
+5. Filter Employees Hired in a Specific Year
+
+SELECT * FROM EMPLOYEE WHERE YEAR(EMP_HIREDATE) = 2010;
+
+6. Get Highest Paid Employee
+
+SELECT * FROM EMPLOYEE ORDER BY EMPSALARY DESC LIMIT 1;
+
+7. General Search System (Using LIKE)
+
+SELECT * FROM EMPLOYEE WHERE EMPNAME LIKE '%A%';
