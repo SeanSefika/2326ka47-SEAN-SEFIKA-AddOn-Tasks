@@ -1,0 +1,11 @@
+mysql> CREATE DATABASE FSD_tasks;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> USE FSD_tasks;
+Database changed
+
+mysql> CREATE TABLE STUDENT(ROLLNO INT, NAME CHAR(20), AGE INT CHECK(AGE>=17), COURSE_FEE INT);
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> CREATE TABLE COURSE(SNO INT, STUDENT_NAME CHAR(20), COURSE_NAME CHAR(30), COURSE_FEES INT);
+Query OK, 0 rows affected (0.05 sec)
