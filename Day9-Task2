@@ -30,7 +30,7 @@ Normalisation to 3NF:
 
 3NF: No transitive dependencies (non-prime attributes depend only on keys)
 
-📘 Relation: Book
+ Relation: Book
 Initial:
 Book(BookID, Title, ISBN, Price, PublicationYear, Genre, StockQuantity, PublisherID)
 FD: BookID → all other attributes
@@ -47,17 +47,17 @@ But if BookID is the system's primary key, then the relation is already in 3NF.
 
 ✅ No transitive dependencies — Already in 3NF.
 
-🧑‍💼 Relation: Author
+ Relation: Author
 Author(AuthorID, Name, Bio, Email)
 FD: AuthorID → Name, Bio, Email
 ✅ Already in 3NF.
 
-🏢 Relation: Publisher
+ Relation: Publisher
 Publisher(PublisherID, Name, Address, ContactEmail, Website)
 FD: PublisherID → Name, Address, ContactEmail, Website
 ✅ Already in 3NF.
 
-📚 Relation: BookAuthor
+ Relation: BookAuthor
 BookAuthor(BookID, AuthorID, Role)
 FD: (BookID, AuthorID) → Role
 ✅ Composite key (BookID, AuthorID), fully determines Role
