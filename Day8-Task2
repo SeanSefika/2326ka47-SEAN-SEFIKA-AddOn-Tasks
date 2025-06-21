@@ -1,0 +1,22 @@
+mysql> INSERT INTO STUDENT VALUES(1,"SEFI",20,5000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO STUDENT VALUES(2,"STEVE",24,6000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO STUDENT VALUES(3,"FENICUS",27,7000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO STUDENT VALUES(4,"PRAISELIN",27,8000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT * FROM STUDENT;
++--------+-----------+------+------------+-------+
+| ROLLNO | NAME      | AGE  | COURSE_FEE | MARKS |
++--------+-----------+------+------------+-------+
+|      1 | SEFI      |   20 |       5000 |   100 |
+|      2 | STEVE     |   24 |       6000 |    99 |
+|      3 | FENICUS   |   27 |       7000 |    98 |
+|      4 | PRAISELIN |   27 |       8000 |    97 |
++--------+-----------+------+------------+-------+
+4 rows in set (0.00 sec)
