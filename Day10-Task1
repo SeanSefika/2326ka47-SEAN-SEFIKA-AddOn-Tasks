@@ -1,0 +1,8 @@
+mysql> SELECT NAME FROM STUDENT WHERE MARKS>98;
++-------+
+| NAME  |
++-------+
+| SEFI  |
+| STEVE |
++-------+
+2 rows in set (0.00 sec)
