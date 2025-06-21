@@ -1,0 +1,9 @@
+mysql> SELECT COURSE_NAME,COURSE_FEES FROM COURSE ORDER BY COURSE_FEES;
++---------------------+-------------+
+| COURSE_NAME         | COURSE_FEES |
++---------------------+-------------+
+| VISCOM              |       10000 |
+| MUSIC               |       20000 |
+| COMPUTER TECHNOLOGY |       50000 |
++---------------------+-------------+
+3 rows in set (0.00 sec)
