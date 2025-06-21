@@ -1,0 +1,36 @@
+CREATE TABLE Book (
+    BookID INT PRIMARY KEY,
+    Title VARCHAR(255) NOT NULL,
+    ISBN VARCHAR(20) UNIQUE NOT NULL,
+    Price DECIMAL(10, 2) NOT NULL,
+    PublicationYear INT,
+    Genre VARCHAR(100),
+    StockQuantity INT DEFAULT 0,
+    PublisherID INT,
+    FOREIGN KEY (PublisherID) REFERENCES Publisher(PublisherID)
+);
+
+CREATE TABLE Author (
+    AuthorID INT PRIMARY KEY,
+    Name VARCHAR(255) NOT NULL,
+    Bio TEXT,
+    Email VARCHAR(255) UNIQUE
+);
+
+CREATE TABLE Publisher (
+    PublisherID INT PRIMARY KEY,
+    Name VARCHAR(255) NOT NULL,
+    Address VARCHAR(255),
+    ContactEmail VARCHAR(255),
+    Website VARCHAR(255)
+);
+
+CREATE TABLE BookAuthor (
+    BookID INT,
+    AuthorID INT,
+    Role VARCHAR(100),
+    PRIMARY KEY (BookID, AuthorID),
+    FOREIGN KEY (BookID) REFERENCES Book(BookID),
+    FOREIGN KEY (AuthorID) REFERENCES Author(AuthorID)
+);
+
