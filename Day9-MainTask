@@ -1,0 +1,112 @@
+Entities and Attributes
+1. Student
+StudentID (Primary Key)
+
+Name
+
+Email
+
+DateOfBirth
+
+MajorDepartmentID (FK)
+
+2. Course
+CourseID (Primary Key)
+
+CourseName
+
+Credits
+
+DepartmentID (FK)
+
+3. Department
+DepartmentID (Primary Key)
+
+DepartmentName
+
+OfficeLocation
+
+4. Registration (Associative entity for Student–Course relationship)
+RegistrationID (Primary Key)
+
+StudentID (FK)
+
+CourseID (FK)
+
+Semester
+
+Grade
+
+ER Diagram (Text Representation)
++----------------+        +------------------+        +----------------+
+|   Department   |        |     Course       |        |    Student     |
+|----------------|        |------------------|        |----------------|
+| DepartmentID PK|<------>| DepartmentID FK  |        | StudentID PK   |
+| DepartmentName |        | CourseID PK      |<--+    | Name           |
+| OfficeLocation |        | CourseName       |   |    | Email          |
++----------------+        | Credits          |   |    | DateOfBirth    |
+                          +------------------+   |    | MajorDeptID FK |
+                                                 |    +----------------+
+                                                 |
++---------------------+                          |
+|    Registration     |                          |
+|---------------------|                          |
+| RegistrationID PK   |                          |
+| StudentID FK -----------------------------------+
+| CourseID FK          |
+| Semester             |
+| Grade                |
++---------------------+
+
+Normalize to 3NF
+All attributes are:
+
+1NF: Atomic values
+
+2NF: All non-key attributes depend on full keys
+
+3NF: No transitive dependencies
+
+All relations are in 3NF because:
+
+Every non-key attribute is functionally dependent on the whole key only.
+
+No derived or transitively dependent fields.
+
+SQL CREATE TABLE Statements
+ Department
+CREATE TABLE Department (
+    DepartmentID INT PRIMARY KEY,
+    DepartmentName VARCHAR(100) NOT NULL,
+    OfficeLocation VARCHAR(100)
+);
+
+ Course
+CREATE TABLE Course (
+    CourseID INT PRIMARY KEY,
+    CourseName VARCHAR(100) NOT NULL,
+    Credits INT NOT NULL,
+    DepartmentID INT,
+    FOREIGN KEY (DepartmentID) REFERENCES Department(DepartmentID)
+);
+
+Student
+CREATE TABLE Student (
+    StudentID INT PRIMARY KEY,
+    Name VARCHAR(100) NOT NULL,
+    Email VARCHAR(100) UNIQUE,
+    DateOfBirth DATE,
+    MajorDepartmentID INT,
+    FOREIGN KEY (MajorDepartmentID) REFERENCES Department(DepartmentID)
+);
+
+Registration
+CREATE TABLE Registration (
+    RegistrationID INT PRIMARY KEY,
+    StudentID INT,
+    CourseID INT,
+    Semester VARCHAR(10),
+    Grade VARCHAR(2),
+    FOREIGN KEY (StudentID) REFERENCES Student(StudentID),
+    FOREIGN KEY (CourseID) REFERENCES Course(CourseID)
+);
