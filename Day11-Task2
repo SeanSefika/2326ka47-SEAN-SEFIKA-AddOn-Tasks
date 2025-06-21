@@ -1,0 +1,13 @@
+mysql> SELECT DEPTNAME, AVG(SALARY) AS AVG_SALARY
+    -> FROM DEPARTMENT
+    -> GROUP BY DEPTNAME;
++------------+---------------+
+| DEPTNAME   | AVG_SALARY    |
++------------+---------------+
+| HR         | 100000.000000 |
+| ACCOUNTING |  20000.000000 |
+| SALES      |  10000.000000 |
+| MARKETING  |  20000.000000 |
+| SERVICE    |  20000.000000 |
++------------+---------------+
+5 rows in set (0.01 sec)
