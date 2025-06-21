@@ -1,0 +1,56 @@
+mysql> CREATE DATABASE LIBRARY;
+Query OK, 1 row affected (0.06 sec)
+
+mysql> CREATE TABLE BOOKS(S_NO INT, STUDENT_NAME CHAR(20), BOOK_NAME CHAR(20), ISSUE_DATE DATE, RETURN_DATE DATE);
+Query OK, 0 rows affected (0.23 sec)
+
+mysql> CREATE TABLE LIBRARY_ACCESS(S_NO INT, STUDENT_NAME CHAR(20), GENDER CHAR(1), AGE INT CHECK(AGE>=17), DEPT CHAR(10));
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> CREATE TABLE LIBRARY_PUNCH(S_NO INT, AGE INT CHECK(AGE>=17), DEPT CHAR(10));
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> INSERT INTO BOOKS VALUES(1,"SEFI","THE JUNGLE BOOK","2025-06-19","2025-06-29");
+Query OK, 1 row affected (0.03 sec)
+
+mysql> INSERT INTO BOOKS VALUES(2,"STEVE","THE LION KING","2025-05-01","2025-05-30");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO LIBRARY_ACCESS VALUES(1,"SEFI","F",20,"CT");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO LIBRARY_ACCESS VALUES(2,"STEVE","M",24,"MUSIC");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO LIBRARY_PUNCH VALUES(1,20,"CT");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO LIBRARY_PUNCH VALUES(2,24,"MUSIC");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT * FROM BOOKS;
++------+--------------+-----------------+------------+-------------+
+| S_NO | STUDENT_NAME | BOOK_NAME       | ISSUE_DATE | RETURN_DATE |
++------+--------------+-----------------+------------+-------------+
+|    1 | SEFI         | THE JUNGLE BOOK | 2025-06-19 | 2025-06-29  |
+|    2 | STEVE        | THE LION KING   | 2025-05-01 | 2025-05-30  |
++------+--------------+-----------------+------------+-------------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT * FROM LIBRARY_ACCESS;
++------+--------------+--------+------+-------+
+| S_NO | STUDENT_NAME | GENDER | AGE  | DEPT  |
++------+--------------+--------+------+-------+
+|    1 | SEFI         | F      |   20 | CT    |
+|    2 | STEVE        | M      |   24 | MUSIC |
++------+--------------+--------+------+-------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT * FROM LIBRARY_PUNCH;
++------+------+-------+
+| S_NO | AGE  | DEPT  |
++------+------+-------+
+|    1 |   20 | CT    |
+|    2 |   24 | MUSIC |
++------+------+-------+
+2 rows in set (0.00 sec)
