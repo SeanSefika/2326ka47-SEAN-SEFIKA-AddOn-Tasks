@@ -1,0 +1,133 @@
+✅ 1. Entities and Attributes
+
+Book
+BookID (PK)
+
+Title
+
+Author
+
+ISBN
+
+Publisher
+
+YearPublished
+
+Genre
+
+CopiesAvailable
+
+ Member
+MemberID (PK)
+
+Name
+
+Email
+
+Phone
+
+Address
+
+MembershipDate
+
+ Loan
+LoanID (PK)
+
+BookID (FK)
+
+MemberID (FK)
+
+LoanDate
+
+DueDate
+
+ReturnDate
+
+Staff
+StaffID (PK)
+
+Name
+
+Email
+
+Role
+
+HireDate
+
+ 2. ER Diagram (Text Representation)
+
++---------+         +----------+         +---------+         +-------+
+|  Book   |         |   Loan   |         | Member  |         | Staff |
+|---------|         |----------|         |---------|         |-------|
+| BookID  |<------->| BookID   |         | MemberID|<------->| LoanID|
+| Title   |         | MemberID |         | Name    |         | ...   |
+| Author  |         | LoanDate |         | ...     |         |       |
+| ISBN    |         | DueDate  |                         [Optional]  |
+| ...     |         | ReturnDate|                                   |
++---------+         +----------+                                    |
+                                                                     |
+                                                     +--------------+
+✅ 3. Normalization to 3NF
+All entities are:
+
+1NF: Atomic values (no repeating groups)
+
+2NF: No partial dependencies (since PKs are single-column or composite with full dependency)
+
+3NF: No transitive dependencies (all non-key attributes depend only on the PK)
+
+ Example FDs:
+BookID → Title, Author, ISBN, Publisher, YearPublished, Genre, CopiesAvailable
+
+MemberID → Name, Email, Phone, Address, MembershipDate
+
+LoanID → BookID, MemberID, LoanDate, DueDate, ReturnDate
+
+StaffID → Name, Email, Role, HireDate
+
+All are in 3NF ✅
+
+✅ 4. SQL CREATE TABLE Scripts
+
+Book Table
+CREATE TABLE Book (
+    BookID INT PRIMARY KEY,
+    Title VARCHAR(255) NOT NULL,
+    Author VARCHAR(255),
+    ISBN VARCHAR(20) UNIQUE,
+    Publisher VARCHAR(100),
+    YearPublished INT,
+    Genre VARCHAR(100),
+    CopiesAvailable INT DEFAULT 0
+);
+
+Member Table
+CREATE TABLE Member (
+    MemberID INT PRIMARY KEY,
+    Name VARCHAR(255) NOT NULL,
+    Email VARCHAR(255) UNIQUE,
+    Phone VARCHAR(20),
+    Address VARCHAR(255),
+    MembershipDate DATE
+);
+
+Loan Table
+CREATE TABLE Loan (
+    LoanID INT PRIMARY KEY,
+    BookID INT,
+    MemberID INT,
+    LoanDate DATE NOT NULL,
+    DueDate DATE NOT NULL,
+    ReturnDate DATE,
+    FOREIGN KEY (BookID) REFERENCES Book(BookID),
+    FOREIGN KEY (MemberID) REFERENCES Member(MemberID)
+);
+
+Staff Table
+CREATE TABLE Staff (
+    StaffID INT PRIMARY KEY,
+    Name VARCHAR(255) NOT NULL,
+    Email VARCHAR(255) UNIQUE,
+    Role VARCHAR(100),
+    HireDate DATE
+);
