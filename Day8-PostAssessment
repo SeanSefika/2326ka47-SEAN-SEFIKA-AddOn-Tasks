@@ -1,0 +1,35 @@
+mysql> CREATE TABLE EMPLOYEE(EMPNO INT, EMPNAME CHAR(20), EMPJOB CHAR(20), EMPSALARY INT, EMP_HIREDATE DATE);
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> CREATE TABLE DEPARTMENT(DEPTNO INT, DEPTNAME CHAR(20), SALARY DECIMAL(10, 2), DEPTLOC CHAR(20));
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> INSERT INTO EMPLOYEE VALUES(1, "A","CLERK",20000,"2020-12-01");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO EMPLOYEE VALUES(2, "B","SALESMAN",10000,"2020-11-20");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO EMPLOYEE VALUES(3, "C","MANAGER",50000,"2005-01-01");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO EMPLOYEE VALUES(4, "D","SECRETARY",60000,"2010-03-06");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO EMPLOYEE VALUES(5, "E","CEO",100000,"2010-03-06");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO DEPARTMENT VALUES(1, "HR",100000,"GROUND FLOOR");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO DEPARTMENT VALUES(2, "ACCOUNTING",20000,"FIRST FLOOR");
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO DEPARTMENT VALUES(3, "SALES",10000,"SECOND FLOOR");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO DEPARTMENT VALUES(4, "MARKETING",20000,"THIRD FLOOR");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO DEPARTMENT VALUES(4, "SERVICE",20000,"FOURTH FLOOR");
+Query OK, 1 row affected (0.01 sec)
